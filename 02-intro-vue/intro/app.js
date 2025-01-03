@@ -9,11 +9,16 @@ const app = createApp({
   setup() {
     const message = ref("I'm batman");
 
-    setTimeout(() => {
-      message.value = "Soy goku";
-    }, 5000);
+    // setTimeout(() => {
+    //   message.value = "Soy goku";
+    // }, 5000);
+
+    const changeQuote = () => {
+      message.value = "hola, soy goku";
+    };
     return {
       message,
+      changeQuote,
     };
   },
 });
