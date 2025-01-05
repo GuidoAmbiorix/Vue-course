@@ -1,11 +1,7 @@
 <template>
-  <h1>Hola Mundo</h1>
+  <IndecisionView />
 </template>
 
-<script lang="ts" setup></script>
-
-<style>
-h1 {
-  color: green;
-}
-</style>
+<script lang="ts" setup>
+import IndecisionView from './views/indecisionView.vue';
+</script>
