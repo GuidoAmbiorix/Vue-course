@@ -1,6 +1,7 @@
 <template>
   <section>
-    <img :src="pokemonImage" alt="" class="brightness-0 h-[200px]" />
+    <img v-if="!showPokemon" :src="pokemonImage" alt="" class="brightness-0 h-[200px]" />
+    <img v-else :src="pokemonImage" alt="pokemon image" class="fade-in h-[200px]" />
   </section>
 </template>
 
@@ -12,7 +13,7 @@ interface Props {
   showPokemon?: boolean;
 }
 
-const props = withDefaults(defineProps<Props>(), {});
+const props = withDefaults(defineProps<Props>(), { showPokemon: false });
 
 const pokemonImage = computed(
   () =>
