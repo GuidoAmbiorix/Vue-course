@@ -15,18 +15,6 @@
 import { useCounter } from '@/composables/useCounter';
 
 const { counter, squareCounter } = useCounter(5);
-
-// import { computed, ref } from 'vue';
-
-// interface Props {
-//   value: number;
-//   text?: string;
-// }
-
-// const props = defineProps<Props>();
-
-// const counter = ref(props.value);
-// const squareCounter = computed(() => counter.value * counter.value);
 </script>
 
 <style scoped>
