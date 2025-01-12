@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { RouterLink } from 'vue-router';
-</script>
-
 <template>
   <!-- Right: Login Form -->
   <h1 class="text-2xl font-semibold mb-4">Login</h1>
@@ -39,7 +35,8 @@ import { RouterLink } from 'vue-router';
     </div>
     <!-- Login Button -->
     <button
-      type="submit"
+      @click="onLogin()"
+      type="button"
       class="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full"
     >
       Login
@@ -50,3 +47,19 @@ import { RouterLink } from 'vue-router';
     <RouterLink :to="{ name: 'register' }" class="hover:underline">Sign up Here</RouterLink>
   </div>
 </template>
+
+<script lang="ts" setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const onLogin = () => {
+  localStorage.setItem('userId', 'ABC-123');
+  const lastPath = localStorage.getItem('lastPath') ?? '/';
+
+  // router.replace({
+  //   name: 'home',
+  // });
+
+  router.replace(lastPath);
+};
+</script>
