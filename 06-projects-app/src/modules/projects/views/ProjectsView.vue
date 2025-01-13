@@ -11,11 +11,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="hover">
-          <th>2</th>
-          <td>Hart Hagerty</td>
-          <td>Desktop Support Technician</td>
-          <td>Purple</td>
+        <tr
+          v-for="(project, index) in projectsStore.projectsWithCompletion"
+          :key="project.id"
+          class="hover"
+        >
+          <th>{{ index + 1 }}</th>
+          <td>{{ project.name }}</td>
+          <td>{{ project.taskCount }}</td>
+          <td>
+            <progress
+              class="progress progress-secondary w-56"
+              :value="project.completion"
+              max="100"
+            ></progress>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -24,7 +34,7 @@
   <InputModal
     :open="modalOpen"
     @close="modalOpen = false"
-    @value="onNewValue"
+    @value="projectsStore.addProject"
     placeholder="Ingrese el nombre del proyecto"
     title="Nuevo proyecto"
   />
@@ -64,13 +74,12 @@ import FapButton from '@/modules/common/components/FabButton.vue';
 import AddCircle from '@/modules/common/icons/AddCircle.vue';
 import InputModal from '@/modules/common/components/InputModal.vue';
 import CustomModal from '@/modules/common/components/CustomModal.vue';
-import { ref } from 'vue';
 import AlignVertical from '@/modules/common/icons/AlignVertical.vue';
+import { ref } from 'vue';
+import { useProjectsStore } from '../store/projects.store';
 
 const modalOpen = ref(false);
 const customModalOpen = ref(false);
 
-const onNewValue = (projectName: string) => {
-  console.log({ projectNane: projectName });
-};
+const projectsStore = useProjectsStore();
 </script>
